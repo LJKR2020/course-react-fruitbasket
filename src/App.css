@@ -1,0 +1,23 @@
+body {
+    background-color: aquamarine;
+}
+
+.logo {
+    width: 100%;
+    border-radius: 10px;
+}
+
+fieldset {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.fruit-styling, .counter-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
