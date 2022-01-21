@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-
+import CounterBlock from "./Components/CounterBlock";
 
 function App() {
     const [strawberryValue, setStrawberryValue] = useState(0);
@@ -32,8 +32,8 @@ function App() {
 
 
     function handleChange(e) {
-        const value = e.target.value();
-        setState({...state, ['e.target.name']: value});
+        const value = e.target.value;
+        setState({...state, [e.target.name]: value});
     }
 
     function handleClick() {
@@ -41,7 +41,7 @@ function App() {
         toggleClicked(!clicked);
     }
 
-    function formSubmit (e) {
+    function formSubmit(e) {
         console.log(`
             Naam: ${state.firstName} 
             Achternaam: ${state.lastName} 
@@ -69,6 +69,7 @@ function App() {
             <fieldset>
                 <fieldset className="fruit-styling">
                     <h3>🍓 Aardbeien</h3>
+                    <CounterBlock />
                     <button
                         type="button"
                         disabled={strawberryValue === 0}
@@ -143,38 +144,38 @@ function App() {
                         <input
                             type="text"
                             placeholder="Typ hier uw voornaam"
-                            name="first-name"
+                            name="firstName"
                             id="first-name"
                             value={state.firstName}
                             onChange={handleChange}
-                            />
+                        />
                     </label>
                     <label htmlFor="last-name">Achternaam:
                         <input
                             type="text"
                             placeholder="Typ hier uw achternaam"
-                            name="last-name"
+                            name="lastName"
                             id="last-name"
                             value={state.lastName}
-                            onChange={(e) => setState(e.target.value)}
-                            />
+                            onChange={handleChange}
+                        />
                     </label>
                     <label htmlFor="current-age">Leeftijd:
                         <input
                             type="number"
-                            name="current-age"
+                            name="age"
                             id="current-age"
                             value={state.age}
-                            onChange={(e) => setState(e.target.value)}
+                            onChange={handleChange}
                         />
                     </label>
                     <label htmlFor="postal-code">Postcode:
                         <input
                             type="text"
-                            name="postal-code"
+                            name="postalCode"
                             id="postal-code"
                             value={state.postalCode}
-                            onChange={(e) => setState(e.target.value)}
+                            onChange={handleChange}
                         />
                     </label>
                     <label htmlFor="delivery-frequentie">Bezorgfrequentie:
@@ -209,9 +210,11 @@ function App() {
                     <label htmlFor="message">Opmerking:</label>
                     <input
                         type="textarea"
-                        name="message"
+                        name="extraMessage"
                         id="message"
-                        placeholder="Typ hier uw bericht."/>
+                        placeholder="Typ hier uw bericht."
+                        value={state.extraMessage}
+                        onChange={handleChange}/>
                     <label htmlFor="terms-and-conditions">
                         <input
                             type="checkbox"
@@ -220,7 +223,7 @@ function App() {
                             checked={checkedTerms}
                             onChange={() => toggleCheckedTerms(!checkedTerms)}
                         />
-                    Ik ga akkoord met de voorwaarden
+                        Ik ga akkoord met de voorwaarden
                     </label>
                     <button
                         type="submit"
