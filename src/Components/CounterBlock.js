@@ -1,31 +1,26 @@
-import React, {useState} from "react";
+import React from "react";
 
-function CounterBlock() {
-    const [fruitValue, setFruitValue] = useState(0);
+
+function CounterBlock({icon, fruit, count, setcount}) {
     return (
         <>
-            <article className="counter-block">
-                <p>{fruitValue}</p>
+            <fieldset className="fruit-styling">
+                <h3>{icon} {fruit}</h3>
                 <button
                     type="button"
-                    name="aftrekken"
-                    onClick={() => setFruitValue(fruitValue - 1)}
-                    disabled={fruitValue === 0}
-                >
-                    -
+                    disabled={count === 0}
+                    onClick={() => setcount(count - 1)}
+                > -
                 </button>
-
+                <p>{count}</p>
                 <button
                     type="button"
-                    name="optellen"
-                    onClick={() => setFruitValue(fruitValue + 1)}
-                >
-                    +
+                    onClick={() => setcount(count + 1)}
+                > +
                 </button>
-            </article>
-
+            </fieldset>
         </>
     )
 }
 
-export default CounterBlock
+export default CounterBlock;

@@ -13,7 +13,7 @@ fieldset {
     padding: 20px;
 }
 
-.fruit-styling, .counter-block {
+.fruit-styling {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
